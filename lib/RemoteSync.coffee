@@ -26,7 +26,7 @@ logger = null
 getLogger = ->
   if not logger
     Logger = require "./Logger"
-    logger = new Logger "Remote Sync"
+    logger = new Logger "Remote Sync PRO"
   return logger
 
 class RemoteSync
@@ -138,7 +138,7 @@ class RemoteSync
       MonitoredFiles.push dirPath
       watcher.add(dirPath)
       if notifications
-        atom.notifications.addInfo "remote-sync: Watching file - *"+fileName+"*"
+        atom.notifications.addInfo "remote-sync-pro: Watching file - *"+fileName+"*"
 
       if !watchChangeSet
         _this = @
@@ -154,7 +154,7 @@ class RemoteSync
       index = MonitoredFiles.indexOf(dirPath)
       MonitoredFiles.splice(index, 1)
       if notifications
-        atom.notifications.addInfo "remote-sync: Unwatching file - *"+fileName+"*"
+        atom.notifications.addInfo "remote-sync-pro: Unwatching file - *"+fileName+"*"
     @.monitorStyles()
 
   monitorStyles: ()->
@@ -173,7 +173,7 @@ class RemoteSync
       if icon_file != null
         list_item = icon_file.parentNode
         list_item.classList.add monitorClass
-        if atom.config.get("remote-sync.monitorFileAnimation")
+        if atom.config.get("remote-sync-pro.monitorFileAnimation")
           list_item.classList.add pulseClass
 
   monitorFilesList: ()->
@@ -183,9 +183,9 @@ class RemoteSync
       for file in watchedPaths[k]
         files += file+"<br/>"
     if files != ""
-      atom.notifications.addInfo "remote-sync: Currently watching:<br/>*"+files+"*"
+      atom.notifications.addInfo "remote-sync-pro: Currently watching:<br/>*"+files+"*"
     else
-      atom.notifications.addWarning "remote-sync: Currently not watching any files"
+      atom.notifications.addWarning "remote-sync-pro: Currently not watching any files"
 
   fileExists: (dirPath) ->
     file_name = @monitorFileName(dirPath)
@@ -193,12 +193,12 @@ class RemoteSync
       exists = fs.statSync(dirPath)
       return true
     catch e
-      atom.notifications.addWarning "remote-sync: cannot find *"+file_name+"* to watch"
+      atom.notifications.addWarning "remote-sync-pro: cannot find *"+file_name+"* to watch"
       return false
 
   isDirectory: (dirPath) ->
     if directory = fs.statSync(dirPath).isDirectory()
-      atom.notifications.addWarning "remote-sync: cannot watch directory - *"+dirPath+"*"
+      atom.notifications.addWarning "remote-sync-pro: cannot watch directory - *"+dirPath+"*"
       return false
 
     return true
@@ -253,7 +253,7 @@ class RemoteSync
       FtpTransport ?= require "./transports/FtpTransport"
       Transport = FtpTransport
     else
-      throw new Error("[remote-sync] invalid transport: " + host.transport + " in " + @configPath)
+      throw new Error("[remote-sync-pro] invalid transport: " + host.transport + " in " + @configPath)
 
     return new Transport(getLogger(), host, @projectPath)
 
@@ -276,32 +276,32 @@ class RemoteSync
     realPath = path.join(@host.target, realPath).replace(/\\/g, "/")
 
     os = require "os" if not os
-    targetPath = path.join os.tmpDir(), "remote-sync", randomize('A0', 16)
+    targetPath = path.join os.tmpDir(), "remote-sync-pro", randomize('A0', 16)
 
     @getTransport().download realPath, targetPath, =>
       @diff localPath, targetPath
 
   diffFolder: (localPath)->
     os = require "os" if not os
-    targetPath = path.join os.tmpDir(), "remote-sync", randomize('A0', 16)
+    targetPath = path.join os.tmpDir(), "remote-sync-pro", randomize('A0', 16)
     @downloadFolder localPath, targetPath, =>
       @diff localPath, targetPath
 
   diff: (localPath, targetPath) ->
     return if @isIgnore(localPath)
     targetPath = path.join(targetPath, path.relative(@projectPath, localPath))
-    diffCmd = atom.config.get('remote-sync.difftoolCommand')
+    diffCmd = atom.config.get('remote-sync-pro.difftoolCommand')
     exec ?= require("child_process").exec
     exec "\"#{diffCmd}\" \"#{localPath}\" \"#{targetPath}\"", (err)->
       return if not err
-      getLogger().error """Check [difftool Command] in your settings (remote-sync).
+      getLogger().error """Check [difftool Command] in your settings (remote-sync-pro).
        Command error: #{err}
        command: #{diffCmd} #{localPath} #{targetPath}
       """
 
 module.exports =
   create: (projectPath)->
-    configPath = path.join projectPath, atom.config.get('remote-sync.configFileName')
+    configPath = path.join projectPath, atom.config.get('remote-sync-pro.configFileName')
     return unless fs.existsSync configPath
     return new RemoteSync(projectPath, configPath)
 
@@ -313,7 +313,7 @@ module.exports =
     emitter = new EventEmitter()
     emitter.on "configured", callback
 
-    configPath = path.join projectPath, atom.config.get('remote-sync.configFileName')
+    configPath = path.join projectPath, atom.config.get('remote-sync-pro.configFileName')
     host = new Host(configPath, emitter)
     view = new HostView(host)
     view.attach()

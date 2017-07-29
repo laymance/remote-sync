@@ -1,6 +1,6 @@
-![Atom Remote Sync](http://i.imgur.com/xBqYanL.png)
+![Atom Remote Sync PRO](http://cdn.laymance.com/remote-sync-pro/remote-sync-pro-banner.png)
 
-# Atom Remote Sync [![Atom.io](https://img.shields.io/badge/Atom.io-1.7.3-40A977.svg)](https://atom.io) [![GitHub stars](https://img.shields.io/github/stars/yongkangchen/remote-sync.svg)](https://github.com/yongkangchen/remote-sync/stargazers) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/yongkangchen/remote-sync/master/LICENSE) [![GitHub issues](https://img.shields.io/github/issues/yongkangchen/remote-sync.svg)](https://github.com/yongkangchen/remote-sync/issues)
+# Atom Remote Sync PRO [![Atom.io](https://img.shields.io/badge/Atom.io-1.7.3-40A977.svg)](https://atom.io) [![GitHub stars](https://img.shields.io/github/stars/laymance/remote-sync-pro.svg)](https://github.com/laymance/remote-sync-pro/stargazers) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/laymance/remote-sync-pro/master/LICENSE) [![GitHub issues](https://img.shields.io/github/issues/laymance/remote-sync-pro.svg)](https://github.com/laymance/remote-sync-pro/issues)
 
 Use SFTP and FTP features inside Atom, having the ability to upload and download files directly from inside Atom.
 
@@ -15,7 +15,7 @@ Use SFTP and FTP features inside Atom, having the ability to upload and download
 
 - Toggle for uploading changes automatically when you save a file
 - Define files to be monitored to be automatically monitoring
-- Set difftoolCommand in AtomSettingView of `remote-sync` -- The path to your diff tool executable
+- Set difftoolCommand in AtomSettingView of `remote-sync-pro` -- The path to your diff tool executable
 - Toggle the logs for extra information
 - Toggle the hiding and showing of the log panel
 - Set custom config name
@@ -35,12 +35,12 @@ You can install this like any other Atom package, with one of these methods:
   - File > Preferences (Windows)
 
 - Select "Install" tab
-- Search for `remote-sync` and click install
+- Search for `remote-sync-pro` and click install
 
 ### APM - terminal
 
 - Open a terminal
-- Run `apm install remote-sync`
+- Run `apm install remote-sync-pro`
 
 ### Manually
 
@@ -50,14 +50,14 @@ You can install this like any other Atom package, with one of these methods:
 
 ## Usage
 
-You can configure remote sync a couple of ways:
+You can configure Remote Sync PRO using multiple methods:
 
 ### Existing project
 
 #### Via Atom (recommended)
 
 1. Right click main project folder
-2. Navigate to Remote Sync > Configure
+2. Navigate to Remote Sync PRO > Configure
 3. Fill in the details / select options
 4. Hit save
 
@@ -71,7 +71,7 @@ You can configure remote sync a couple of ways:
 
 1. Follow setups for creating existing project - see above
 1. Right click main project folder
-2. Navigate to Remote Sync > Download folder
+2. Navigate to Remote Sync PRO > Download folder
 
 
 ## Options
@@ -218,7 +218,3 @@ The `.remote-sync.json` in your project root will use these options:
   ]
 }
 ```
-
-# Make a donation via Paypal ![Make a donation via Paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)
-
-Click 'Send Money' after login PayPal, and my PayPal account is: lx1988cyk#gmail.com

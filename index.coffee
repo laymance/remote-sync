@@ -96,18 +96,18 @@ module.exports =
     disposables = new CompositeDisposable
 
     disposables.add atom.commands.add('atom-workspace', {
-      'remote-sync:upload-folder': (e)-> handleEvent(e, "uploadFolder")
-      'remote-sync:upload-file': (e)-> handleEvent(e, "uploadFile")
-      'remote-sync:delete-file': (e)-> handleEvent(e, "deleteFile")
-      'remote-sync:delete-folder': (e)-> handleEvent(e, "deleteFile")
-      'remote-sync:download-file': (e)-> handleEvent(e, "downloadFile")
-      'remote-sync:download-folder': (e)-> handleEvent(e, "downloadFolder")
-      'remote-sync:diff-file': (e)-> handleEvent(e, "diffFile")
-      'remote-sync:diff-folder': (e)-> handleEvent(e, "diffFolder")
-      'remote-sync:upload-git-change': (e)-> handleEvent(e, "uploadGitChange")
-      'remote-sync:monitor-file': (e)-> handleEvent(e, "monitorFile")
-      'remote-sync:monitor-files-list': (e)-> handleEvent(e,"monitorFilesList")
-      'remote-sync:configure': configure
+      'remote-sync-pro:upload-folder': (e)-> handleEvent(e, "uploadFolder")
+      'remote-sync-pro:upload-file': (e)-> handleEvent(e, "uploadFile")
+      'remote-sync-pro:delete-file': (e)-> handleEvent(e, "deleteFile")
+      'remote-sync-pro:delete-folder': (e)-> handleEvent(e, "deleteFile")
+      'remote-sync-pro:download-file': (e)-> handleEvent(e, "downloadFile")
+      'remote-sync-pro:download-folder': (e)-> handleEvent(e, "downloadFolder")
+      'remote-sync-pro:diff-file': (e)-> handleEvent(e, "diffFile")
+      'remote-sync-pro:diff-folder': (e)-> handleEvent(e, "diffFolder")
+      'remote-sync-pro:upload-git-change': (e)-> handleEvent(e, "uploadGitChange")
+      'remote-sync-pro:monitor-file': (e)-> handleEvent(e, "monitorFile")
+      'remote-sync-pro:monitor-files-list': (e)-> handleEvent(e,"monitorFilesList")
+      'remote-sync-pro:configure': configure
     })
 
     disposables.add atom.project.onDidChangePaths (projectPaths)->

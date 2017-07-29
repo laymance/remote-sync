@@ -1,9 +1,9 @@
 {
-  "name": "remote-sync",
-  "version": "4.1.5",
+  "name": "remote-sync-pro",
+  "version": "0.0.0",
   "description": "Upload your files to remote host after every change. Both SCP/SFTP and FTP are supported.",
   "license": "MIT",
-  "repository": "https://github.com/yongkangchen/remote-sync",
+  "repository": "https://github.com/laymance/remote-sync-pro",
   "main": "index.coffee",
   "engines": {
     "atom": ">=0.78"
