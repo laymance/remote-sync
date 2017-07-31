@@ -34,12 +34,12 @@ class Logger
     date = new Date
     startTime = date.getTime()
     message = "[#{date.toLocaleTimeString()}] #{message}"
-    atom.notifications.addInfo("#{{message}}")
+    atom.notifications.addInfo("#{message}")
     if atom.config.get("remote-sync.logToConsole")
       console.log message
       ()->
         console.log "#{message} Complete (#{Date.now() - startTime}ms)"
-        atom.notifications.addSuccess("#{{message}}")
+        atom.notifications.addSuccess("#{message}")
     else
       if AutoHideTimer
         clearTimeout AutoHideTimer
