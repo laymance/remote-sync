@@ -24,7 +24,7 @@ class Logger
 
     @panel.body.scrollTop(1e10)
 
-    if atom.config.get("remote-sync.foldLogPanel") and not @foldedPanel
+    if atom.config.get("remote-sync-pro.foldLogPanel") and not @foldedPanel
       @panel.toggle()
       @foldedPanel = true
 
@@ -35,7 +35,7 @@ class Logger
     startTime = date.getTime()
     message = "[#{date.toLocaleTimeString()}] #{message}"
     atom.notifications.addInfo("#{message}")
-    if atom.config.get("remote-sync.logToConsole")
+    if atom.config.get("remote-sync-pro.logToConsole")
       console.log message
       ()->
         console.log "#{message} Complete (#{Date.now() - startTime}ms)"
@@ -51,7 +51,7 @@ class Logger
           @panel.setSummary
             summary: "#{message} #{endMsg}"
             className: "text-info"
-          if atom.config.get("remote-sync.autoHideLogPanel")
+          if atom.config.get("remote-sync-pro.autoHideLogPanel")
             AutoHideTimer = setTimeout @panel.close.bind(@panel), 1000
 
   error: (message) ->
