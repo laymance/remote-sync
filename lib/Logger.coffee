@@ -6,6 +6,12 @@ class Logger
   constructor: (@title) ->
 
   showInPanel: (message, className) ->
+    if atom.config.get("remote-sync-pro.logToAtomNotifications")
+      if className == 'text-error'
+        atom.notifications.addError("#{message}")
+      else
+        atom.notifications.addInfo("#{message}")
+        
     if not @panel
       {MessagePanelView, PlainMessageView} = require "atom-message-panel"
       @panel = new MessagePanelView
@@ -33,13 +39,14 @@ class Logger
   log: (message) ->
     date = new Date
     startTime = date.getTime()
+    notifymessage = "#{message}"
     message = "[#{date.toLocaleTimeString()}] #{message}"
-    atom.notifications.addInfo("#{message}")
     if atom.config.get("remote-sync-pro.logToConsole")
+      if atom.config.get("remote-sync-pro.logToAtomNotifications")
+        atom.notifications.addInfo("#{notifymessage}")
       console.log message
       ()->
         console.log "#{message} Complete (#{Date.now() - startTime}ms)"
-        atom.notifications.addSuccess("#{message}")
     else
       if AutoHideTimer
         clearTimeout AutoHideTimer

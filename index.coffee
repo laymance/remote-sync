@@ -64,6 +64,11 @@ module.exports =
       default: false
       title: 'Log to console'
       description: 'Log messages to the console instead of the status view at the bottom of the window'
+    logToAtomNotifications:
+      type: 'boolean'
+      default: false
+      title: 'Use Atom Notifications'
+      description: 'Show log messages using Atom notifications'
     autoHideLogPanel:
       type: 'boolean'
       default: false
