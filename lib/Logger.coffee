@@ -11,7 +11,7 @@ class Logger
         atom.notifications.addError("#{message}")
       else
         atom.notifications.addInfo("#{message}")
-        
+
     if not @panel
       {MessagePanelView, PlainMessageView} = require "atom-message-panel"
       @panel = new MessagePanelView
@@ -41,9 +41,9 @@ class Logger
     startTime = date.getTime()
     notifymessage = "#{message}"
     message = "[#{date.toLocaleTimeString()}] #{message}"
+    if atom.config.get("remote-sync-pro.logToAtomNotifications")
+      atom.notifications.addInfo("#{notifymessage}")
     if atom.config.get("remote-sync-pro.logToConsole")
-      if atom.config.get("remote-sync-pro.logToAtomNotifications")
-        atom.notifications.addInfo("#{notifymessage}")
       console.log message
       ()->
         console.log "#{message} Complete (#{Date.now() - startTime}ms)"
@@ -51,15 +51,22 @@ class Logger
       if AutoHideTimer
         clearTimeout AutoHideTimer
         AutoHideTimer = null
-      msg = @showInPanel message, "text-info"
+      if ! atom.config.get("remote-sync-pro.logToAtomNotifications")
+        msg = @showInPanel message, "text-info"
       ()=>
           endMsg = " Complete (#{Date.now() - startTime}ms)"
-          msg.append endMsg
-          @panel.setSummary
-            summary: "#{message} #{endMsg}"
-            className: "text-info"
-          if atom.config.get("remote-sync-pro.autoHideLogPanel")
-            AutoHideTimer = setTimeout @panel.close.bind(@panel), 1000
+          if atom.config.get("remote-sync-pro.logToAtomNotifications")
+            atom.notifications.addSuccess(endMsg)
+          else
+            msg.append endMsg
+            @panel.setSummary
+              summary: "#{message} #{endMsg}"
+              className: "text-info"
+            if atom.config.get("remote-sync-pro.autoHideLogPanel")
+              AutoHideTimer = setTimeout @panel.close.bind(@panel), 1000
 
   error: (message) ->
-    @showInPanel "#{message}","text-error"
+    if atom.config.get("remote-sync-pro.logToAtomNotifications")
+      atom.notifications.addError("#{message}")
+    else
+      @showInPanel "#{message}","text-error"
