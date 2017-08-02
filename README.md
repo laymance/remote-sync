@@ -21,6 +21,7 @@ Remote Sync PRO is a fork of the remote-sync project which was abandoned in 2016
 - Toggle the logs for extra information
 - Toggle the hiding and showing of the log panel
 - Set custom config name
+- Support for native Atom Notifications
 
 ## Installation
 
