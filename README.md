@@ -1,6 +1,6 @@
 ![Atom Remote Sync PRO](http://cdn.laymance.com/remote-sync-pro/remote-sync-pro-banner.png)
 
-# Atom Remote Sync PRO [![Atom.io](https://img.shields.io/badge/Atom.io-1.7.3-40A977.svg)](https://atom.io) [![GitHub stars](https://img.shields.io/github/stars/laymance/remote-sync-pro.svg)](https://github.com/laymance/remote-sync-pro/stargazers) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/laymance/remote-sync-pro/master/LICENSE) [![GitHub issues](https://img.shields.io/github/issues/laymance/remote-sync-pro.svg)](https://github.com/laymance/remote-sync-pro/issues)
+# Atom Remote Sync [![Atom.io](https://img.shields.io/badge/Atom.io-1.21.1-40A977.svg)](https://atom.io) [![GitHub stars](https://img.shields.io/github/stars/yongkangchen/remote-sync.svg)](https://github.com/yongkangchen/remote-sync/stargazers) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/yongkangchen/remote-sync/master/LICENSE) [![GitHub issues](https://img.shields.io/github/issues/yongkangchen/remote-sync.svg)](https://github.com/yongkangchen/remote-sync/issues)
 
 Use SFTP and FTP features inside Atom, having the ability to upload and download files directly from inside Atom.
 
@@ -229,19 +229,19 @@ If you want to use app with parameters or console app, try this:
 
 - **code** (Visual Studio Code)
 
-  create shell script `atom-diff-code` in `/usr/local/bin/` with command 
-  
+  create shell script `atom-diff-code` in `/usr/local/bin/` with command
+
   ```
   #!/bin/bash
   code -d -n --disable-extensions $1 $2
   ```
-  
+
   Then set `atom-diff-code` in Diff tool command setting in remote-sync-pro in atom
 
 - **vim** in Ubuntu:
-  
+
   `atom-diff-vimdiff`
-  
+
   ```
   #!/bin/bash
   gnome-terminal -x bash -c "vimdiff  $1 $2"

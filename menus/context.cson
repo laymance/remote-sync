@@ -1,23 +1,24 @@
 'context-menu':
-  'atom-text-editor, .tool-panel.tree-view .file':[ 
-    label: 'Remote Sync PRO',
+  '.entries.list-tree .file.entry.list-item':[
+    label: 'Remote Sync',
     submenu:[
-      {label: 'Upload File', command: 'remote-sync-pro:upload-file'}
-      {label: 'Download File', command: 'remote-sync-pro:download-file'}
-      {label: 'Diff File', command: 'remote-sync-pro:diff-file'}
-      {label: 'Delete File', command: 'remote-sync-pro:delete-file'}
-      {label: 'Monitor File (Upload on External Save)', command: 'remote-sync-pro:monitor-file'}
+      {label: 'Upload File', command: 'remote-sync:upload-file'}
+      {label: 'Download File', command: 'remote-sync:download-file'}
+      {label: 'Diff File', command: 'remote-sync:diff-file'}
+      {label: 'Delete File', command: 'remote-sync:delete-file'}
+      {label: 'Monitor File (Upload on External Save)', command: 'remote-sync:monitor-file'}
+      {label: 'Configure', command: 'remote-sync:configure'}
     ]
   ]
 
-  '.tool-panel.tree-view .header.list-item':[
-    label: 'Remote Sync PRO',
+  '.entries.list-tree .header.list-item, .header.list-item.project-root-header':[
+    label: 'Remote Sync',
     submenu:[
-      {label: 'Configure', command: 'remote-sync-pro:configure'}
-      {label: 'Upload Folder', command: 'remote-sync-pro:upload-folder'}
-      {label: 'Upload Folder Change', command: 'remote-sync-pro:upload-git-change'}
-      {label: 'Download Folder', command: 'remote-sync-pro:download-folder'}
-      {label: 'Diff Folder', command: 'remote-sync-pro:diff-folder'}
-      {label: 'Delete Folder', command: 'remote-sync-pro:delete-folder'}
+      {label: 'Upload Folder', command: 'remote-sync:upload-folder'}
+      {label: 'Upload Folder Change', command: 'remote-sync:upload-git-change'}
+      {label: 'Download Folder', command: 'remote-sync:download-folder'}
+      {label: 'Diff Folder', command: 'remote-sync:diff-folder'}
+      {label: 'Delete Folder', command: 'remote-sync:delete-folder'}
+      {label: 'Configure', command: 'remote-sync:configure'}
     ]
   ]
