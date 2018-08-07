@@ -92,10 +92,18 @@ module.exports =
     configFileName:
       type: 'string'
       default: '.remote-sync.json'
+    concurrentTransports:
+      type: 'integer'
+      default: '1'
+      description: 'How many transfers in process at the same time'
 
   activate: (state) ->
     projectDict = {}
-    initProject(atom.project.getPaths())
+    try
+      initProject(atom.project.getPaths())
+    catch
+      atom.notifications.addError "RemoteSync Error",
+      {dismissable: true, detail: "Failed to initalise RemoteSync"}
 
     CompositeDisposable ?= require('atom').CompositeDisposable
     disposables = new CompositeDisposable
@@ -143,6 +151,7 @@ module.exports =
 
       disposables.add onDidSave
       disposables.add onDidDestroy
+
 
   deactivate: ->
     disposables.dispose()

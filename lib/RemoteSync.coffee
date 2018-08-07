@@ -33,7 +33,7 @@ class RemoteSync
   constructor: (@projectPath, @configPath) ->
     Host ?= require './model/host'
 
-    @host = new Host(@configPath)
+    @host = new Host(@configPath, getLogger())
     watchFiles = @host.watch?.split(",").filter(Boolean)
     @projectPath = path.join(@projectPath, @host.source) if @host.source
     if watchFiles?
@@ -316,7 +316,7 @@ module.exports =
     emitter = new EventEmitter()
     emitter.on "configured", callback
 
-    configPath = path.join projectPath, atom.config.get('remote-sync-pro.configFileName')
-    host = new Host(configPath, emitter)
+    configPath = path.join projectPath, atom.config.get('remote-sync.configFileName')
+    host = new Host(configPath, getLogger(), emitter)
     view = new HostView(host)
     view.attach()
