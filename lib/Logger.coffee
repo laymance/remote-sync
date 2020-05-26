@@ -36,6 +36,9 @@ class Logger
 
     msg
 
+  ok: (message, icon) ->
+	atom.notifications.addSuccess msg, {icon}
+
   log: (message) ->
     date = new Date
     startTime = date.getTime()

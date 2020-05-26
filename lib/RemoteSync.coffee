@@ -293,6 +293,9 @@ class RemoteSync
   diff: (localPath, targetPath) ->
     return if @isIgnore(localPath)
     targetPath = path.join(targetPath, path.relative(@projectPath, localPath))
+    if fs.md5ForPath(localPath) == fs.md5ForPath(targetPath)
+      getLogger().ok "Files are synced" "diff"
+      return
     diffCmd = atom.config.get('remote-sync-pro.difftoolCommand')
     exec ?= require("child_process").exec
     exec "\"#{diffCmd}\" \"#{localPath}\" \"#{targetPath}\"", (err)->
